@@ -1,16 +1,16 @@
-
 process.on("uncaughtException", (err) => {
-  console.error(" Uncaught Exception:", err);
+  console.error("🔥 Uncaught Exception:", err);
 });
 process.on("unhandledRejection", (reason) => {
-  console.error(" Unhandled Rejection:", reason);
+  console.error("🔥 Unhandled Rejection:", reason);
 });
 
 import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 
-console.log("Starting server script");
+const NODE_ENV = process.env.NODE_ENV || "development";
+console.log(`📡 Starting server in ${NODE_ENV} mode`);
 
 const app = express();
 
