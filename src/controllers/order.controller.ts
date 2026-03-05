@@ -36,7 +36,7 @@ export const placeOrder = async (req: AuthRequest, res: Response) => {
         shippingAddress,
         expectedDelivery: new Date(expectedDelivery),
         items: {
-          create: cart.items.map((item) => ({
+          create: cart.items.map((item: (typeof cart.items)[number]) => ({
             productId: item.productId,
             quantity: item.quantity,
             totalPrice: item.totalPrice,
