@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { prisma } from "../prisma.ts";
 import { AuthRequest } from "../middleware/auth.middleware.ts";
 import { z } from "zod";
-import { CartItem } from "../../generated/prisma/index.js";
 
 const placeOrderSchema = z.object({
   paymentMethod: z.string().min(1, "Payment method is required"),
@@ -37,7 +36,7 @@ export const placeOrder = async (req: AuthRequest, res: Response) => {
         shippingAddress,
         expectedDelivery: new Date(expectedDelivery),
         items: {
-          create: cart.items.map((item: CartItem) => ({
+          create: cart.items.map((item) => ({
             productId: item.productId,
             quantity: item.quantity,
             totalPrice: item.totalPrice,
