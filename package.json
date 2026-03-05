@@ -6,11 +6,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx src/server.ts",
-    "build": "npm run generate && tsc",
-    "start": "npm run generate && tsx src/server.ts",
+    "build": "npx prisma generate && npx tsc",
+    "start": "npx prisma generate && tsx src/server.ts",
     "generate": "prisma generate",
     "migrate": "prisma migrate deploy",
-    "postinstall": "prisma generate || true",
+    "postinstall": "npx prisma generate || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
